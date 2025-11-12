@@ -1,0 +1,361 @@
+
+You are AI Assistant convert HTML DOM to playwright test code,You are an Expert in CRM application 
+
+Instructions -
+-Generate Playwright test code 
+-Use meaningful name to methods
+-Add meaningful comments for user to understand
+-Follow Locator Strategy
+-Use Only ID when it is unique and do not have numbers 
+-Use Name when ID is not present or not unique
+-[Mandatory] Use XPath Preferably relative XPath
+-[Strictly] Do no use CSS
+-[Mandatory]Generate only 1 testcase
+-[Critical] Use explicit wait no thread.sleep()
+-Use <form id> </form> for login
+-Pass Username as demosalesmanager 
+-Pass password as crmsfa 
+-Click login button
+-click crmsfa link
+-Click leads tab
+-click create leads tab
+-Use <<tbody>> </<tbody>> tag to create lead
+-Pass mandatory fields Company name as |Testleaf|
+-Pass first name as |Sudarsan|
+-Pass Last name as |s|
+
+
+
+
+<form id="login" method="post" action="/opentaps/control/login">
+        <p class="top">
+          <label for="username">Username</label>
+          <input class="inputLogin" type="text" id="username" name="USERNAME" size="50">
+        </p>
+        <p>
+          <label for="password">Password</label>
+          <input class="inputLogin" type="password" id="password" name="PASSWORD" size="50">
+        </p>
+
+        <p>
+          <input class="decorativeSubmit" type="submit" value="Login">
+        </p>
+      </form>
+
+
+<tbody><tr>
+   <td class="label" id="ext-gen592"><span class="requiredField" id="ext-gen593">Company Name</span></td>
+   <td id="ext-gen588"><input type="text" class="inputBox" name="companyName" size="30" maxlength="100" id="createLeadForm_companyName">
+</td>
+   <td class="label"><span class="tableheadtext">Parent Account</span></td>
+   <td id="ext-gen608"><input type="text" class="inputBox" name="parentPartyId" size="20" maxlength="20" id="createLeadForm_parentPartyId"><a href="javascript:call_fieldlookup2(document.createLeadForm.parentPartyId,'LookupAccounts;jsessionid=B1971F600F92A67757992F5F79480981.jvm1');"><img src="/images/fieldlookup.gif" width="15" height="14" border="0" alt="Lookup"></a>
+</td>
+  </tr>
+  <tr>
+   <td class="label" id="ext-gen594"><span class="requiredField">First name</span></td>
+   <td id="ext-gen603"><input type="text" class="inputBox" name="firstName" size="30" maxlength="100" id="createLeadForm_firstName">
+</td>
+   <td class="label" id="ext-gen609"><span class="requiredField" id="ext-gen610">Last name</span></td>
+   <td><input type="text" class="inputBox" name="lastName" size="30" maxlength="100" id="createLeadForm_lastName">
+</td>
+  </tr>
+  <tr>
+   <td class="label" id="ext-gen595"><span class="tableheadtext" id="ext-gen611">Source</span></td>
+   <td id="ext-gen612"><select class="inputBox" name="dataSourceId" id="createLeadForm_dataSourceId" size="1"><option value="">&nbsp;</option><option value="LEAD_COLDCALL">Cold Call</option><option value="LEAD_CONFERENCE">Conference</option><option value="LEAD_DIRECTMAIL">Direct Mail</option><option value="LEAD_EMPLOYEE">Employee</option><option value="LEAD_EXISTCUST">Existing Customer</option><option value="LEAD_OTHER">Other</option><option value="LEAD_PARTNER">Partner</option><option value="LEAD_PR">Public Relations</option><option value="LEAD_SELFGEN">Self Generated</option><option value="LEAD_TRADESHOW">Tradeshow</option><option value="LEAD_WEBSITE">Website</option><option value="LEAD_WORDOFMOUTH">Word of Mouth</option></select></td>
+   <td class="label" id="ext-gen605"><span class="tableheadtext">Marketing Campaign</span></td>
+   <td><select class="inputBox" name="marketingCampaignId" id="createLeadForm_marketingCampaignId" size="1"><option value="">&nbsp;</option><option value="9002">Affiliate Sites</option><option value="CATRQ_AUTOMOBILE">Automobile</option><option value="CATRQ_CARNDRIVER">Car and Driver</option><option value="CATRQ_CAMPAIGNS">Catalog Generating Marketing Campaigns</option><option value="DEMO_MKTG_CAMP">Demo Marketing Campaign</option><option value="9000">eCommerce Site Internal Campaign</option><option value="9001">Pay Per Click Advertising</option><option value="CATRQ_ROADNTRACK">Road and Track</option></select></td>
+  </tr>
+  <tr>
+   <td class="label"><span class="tableheadtext" id="ext-gen596">First Name (Local)</span></td>
+   <td><input type="text" class="inputBox" name="firstNameLocal" size="30" maxlength="100" id="createLeadForm_firstNameLocal">
+</td>
+   <td class="label"><span class="tableheadtext">Last Name (Local)</span></td>
+   <td><input type="text" class="inputBox" name="lastNameLocal" size="30" maxlength="100" id="createLeadForm_lastNameLocal">
+</td>
+  </tr>
+  <tr>
+   <td class="label" id="ext-gen602"><span class="tableheadtext">Salutation</span></td>
+   <td><input type="text" class="inputBox" name="personalTitle" size="30" maxlength="100" id="createLeadForm_personalTitle">
+</td>
+   <td class="label"><span class="tableheadtext">Birth Date</span></td>
+   <td><input type="text" class="inputBox" name="birthDate" title="Format: M/d/yy" size="10" maxlength="10" id="createLeadForm_birthDate"><a href="javascript:opentaps.toggleClass(document.getElementById('createLeadForm_birthDate-calendar-placeholder'), 'hidden');"><img id="createLeadForm_birthDate-button" src="/images/cal.gif" width="16" height="16" border="0" alt="View Calendar" title="View Calendar"></a><table id="createLeadForm_birthDate-calendar-placeholder" style="border: 0px; width: auto;" class="hidden"></table>
+<script type="text/javascript">
+  function createLeadForm_birthDate_onDateChange(calendar) {
+    if (calendar.dateClicked) {
+      var y = calendar.date.getFullYear();
+      var m = calendar.date.getMonth();
+      var d = calendar.date.getDate();
+      var input = document.getElementById('createLeadForm_birthDate');
+      if (input) {
+        input.value = y+'-'+((m < 9) ? ("0" + (1+m)) : (1+m))+'-'+((d < 10) ? ("0" + d) : d);
+      }
+      opentaps.addClass(document.getElementById('createLeadForm_birthDate-calendar-placeholder'), 'hidden');
+  }};
+  Calendar.setup({
+    inputField: "createLeadForm_birthDate",
+    ifFormat: "%m/%e/%y",
+    button: "createLeadForm_birthDate-button",
+    align: "Bl",
+    weekNumbers: false,
+    showOthers: true,
+    cache: true});
+</script></td>
+  </tr>
+  <tr>
+   <td class="label" id="ext-gen597"><span class="tableheadtext">Title</span></td>
+   <td><input type="text" class="inputBox" name="generalProfTitle" size="30" maxlength="100" id="createLeadForm_generalProfTitle">
+</td>
+   <td class="label"><span class="tableheadtext">Department</span></td>
+   <td><input type="text" class="inputBox" name="departmentName" size="30" maxlength="100" id="createLeadForm_departmentName">
+</td>
+  </tr>
+  <tr>
+   <td class="label" id="ext-gen601"><span class="tableheadtext">Annual Revenue</span></td>
+   <td><input type="text" class="inputBox" name="annualRevenue" size="15" maxlength="15" id="createLeadForm_annualRevenue">
+</td>
+   <td class="label"><span class="tableheadtext">Preferred Currency</span></td>
+   <td><select class="inputBox" name="currencyUomId" id="createLeadForm_currencyUomId" size="1"><option value="">&nbsp;</option><option value="AFA">AFA - Afghani</option><option value="ALL">ALL - Albanian Lek</option><option value="DZD">DZD - Algerian Dinar</option><option value="ADP">ADP - Andoran peseta</option><option value="AOK">AOK - Angolan Kwanza</option><option value="ARS">ARS - Argentina Peso</option><option value="ARA">ARA - Argentinian Austral</option><option value="AMD">AMD - Armenian Dram</option><option value="AWG">AWG - Aruban Guilder</option><option value="AUD">AUD - Australian Dollar</option><option value="AZM">AZM - Azerbaijan Manat</option><option value="BSD">BSD - Bahaman Dollar</option><option value="BHD">BHD - Bahrain Dinar</option><option value="BDT">BDT - Bangladesh Taka</option><option value="BBD">BBD - Barbados Dollar</option><option value="BZD">BZD - Belize Dollar</option><option value="BYR">BYR - Belorussian Ruble</option><option value="XOF">XOF - Benin C.f.A. Franc</option><option value="BMD">BMD - Bermudan Dollar</option><option value="BOB">BOB - Bolivian Boliviano</option><option value="BAD">BAD - Bosnia-Herzogovinian Dinar</option><option value="BWP">BWP - Botswana Pula</option><option value="BRR">BRR - Brazil</option><option value="BRL">BRL - Brazilian Real</option><option value="GBP">GBP - British Pound</option><option value="BND">BND - Brunei Dollar</option><option value="BGN">BGN - Bulgarian Lev</option><option value="BIF">BIF - Burundi Franc</option><option value="KHR">KHR - Cambodian Riel</option><option value="CAD">CAD - Canadian Dollar</option><option value="CVE">CVE - Cape Verde Escudo</option><option value="KYD">KYD - Cayman Dollar</option><option value="CLP">CLP - Chilean Peso</option><option value="CNY">CNY - China</option><option value="COP">COP - Colombian Peso</option><option value="KMF">KMF - Comoros Franc</option><option value="CRC">CRC - Costa Rica Colon</option><option value="HRD">HRD - Croatian Dinar</option><option value="CUP">CUP - Cuban Peso</option><option value="CYP">CYP - Cyprus Pound</option><option value="CZK">CZK - Czech Krona</option><option value="DKK">DKK - Danish Krone</option><option value="DJF">DJF - Djibouti Franc</option><option value="DOP">DOP - Dominican Peso</option><option value="DRP">DRP - Dominican Republic Peso</option><option value="XCD">XCD - East Carribean Dollar</option><option value="ECS">ECS - Ecuador Sucre</option><option value="EGP">EGP - Egyptian Pound</option><option value="SVC">SVC - El Salvador Colon</option><option value="EEK">EEK - Estonian Krone</option><option value="ETB">ETB - Ethiopian Birr</option><option value="EUR">EUR - Euro</option><option value="FKP">FKP - Falkland Pound</option><option value="FJD">FJD - Fiji Dollar</option><option value="XAF">XAF - Gabon C.f.A Franc</option><option value="GMD">GMD - Gambian Dalasi</option><option value="GEK">GEK - Georgian Kupon</option><option value="GHC">GHC - Ghanian Cedi</option><option value="GIP">GIP - Gibraltar Pound</option><option value="GTQ">GTQ - Guatemalan Quedzal</option><option value="GNF">GNF - Guinea Franc</option><option value="GWP">GWP - Guinea Peso</option><option value="GYD">GYD - Guyanese Dollar</option><option value="HTG">HTG - Haitian Gourde</option><option value="HNL">HNL - Honduran Lempira</option><option value="HKD">HKD - Hong Kong Dollar</option><option value="HUF">HUF - Hungarian forint</option><option value="ISK">ISK - Iceland Krona</option><option value="IDR">IDR - Indonesian Rupiah</option><option value="INR">INR - Indian Rupee</option><option value="IRR">IRR - Iranian Rial</option><option value="IQD">IQD - Iraqui Dinar</option><option value="ILS">ILS - Israeli Scheckel</option><option value="JMD">JMD - Jamaican Dollar</option><option value="JPY">JPY - Japanese Yen</option><option value="JOD">JOD - Jordanian Dinar</option><option value="KZT">KZT - Kazakhstani Tenge</option><option value="KES">KES - Kenyan Shilling</option><option value="KIS">KIS - Kirghizstan Som</option><option value="KWD">KWD - Kuwaiti Dinar</option><option value="LAK">LAK - Laotian Kip</option><option value="LVL">LVL - Latvian Lat</option><option value="LBP">LBP - Lebanese Pound</option><option value="SLL">SLL - Leone</option><option value="LSL">LSL - Lesotho Loti</option><option value="LRD">LRD - Liberian Dollar</option><option value="LYD">LYD - Libyan Dinar</option><option value="LTL">LTL - Lithuanian Lita</option><option value="MOP">MOP - Macao Pataca</option><option value="MGF">MGF - Madagascan Franc</option><option value="MWK">MWK - Malawi Kwacha</option><option value="MYR">MYR - Malaysian Ringgit</option><option value="MVR">MVR - Maldive Rufiyaa</option><option value="MTL">MTL - Maltese Lira</option><option value="MRO">MRO - Mauritanian Ouguiya</option><option value="MUR">MUR - Mauritius Rupee</option><option value="MXN">MXN - Mexican Peso (new)</option><option value="MXP">MXP - Mexican Peso (old)</option><option value="MDL">MDL - Moldavian Lei</option><option value="MNT">MNT - Mongolian Tugrik</option><option value="MAD">MAD - Moroccan Dirham</option><option value="MZM">MZM - Mozambique Metical</option><option value="NPR">NPR - Nepalese Rupee</option><option value="NIS">NIS - New Israeli Shekel</option><option value="TWD">TWD - New Taiwan Dollar</option><option value="NZD">NZD - New Zealand Dollar</option><option value="NIC">NIC - Nicaragua</option><option value="NIO">NIO - Nicaraguan Cordoba</option><option value="NGN">NGN - Nigerian Naira</option><option value="KPW">KPW - North Korean Won</option><option value="NOK">NOK - Norwegian Krone</option><option value="OMR">OMR - Omani Rial</option><option value="PKR">PKR - Pakistan Rupee</option><option value="PAB">PAB - Panamanian Balboa</option><option value="PGK">PGK - Papua New Guinea Kina</option><option value="PYG">PYG - Paraguayan Guarani</option><option value="SOL">SOL - Peru</option><option value="PEI">PEI - Peruvian Inti</option><option value="PES">PES - Peruvian Sol</option><option value="PEN">PEN - Peruvian Sol - New</option><option value="PHP">PHP - Philippino Peso</option><option value="PLZ">PLZ - Poland</option><option value="PLN">PLN - Polish Zloty</option><option value="QAR">QAR - Qatar Riyal</option><option value="ROL">ROL - Romanian Leu</option><option value="RUR">RUR - Russian Rouble</option><option value="SUR">SUR - Russian Ruble (old)</option><option value="RWF">RWF - Rwanda Franc</option><option value="WST">WST - Samoan Tala</option><option value="CDP">CDP - Santo Domiongo</option><option value="STD">STD - Sao Tome / Principe Dobra</option><option value="SAR">SAR - Saudi Riyal</option><option value="SCR">SCR - Seychelles Rupee</option><option value="SGD">SGD - Singapore Dollar</option><option value="SBD">SBD - Solomon Islands Dollar</option><option value="SOS">SOS - Somalian Shilling</option><option value="ZAR">ZAR - South African Rand</option><option value="KRW">KRW - South Korean Won</option><option value="LKR">LKR - Sri Lankan Rupee</option><option value="SHP">SHP - St.Helena Pound</option><option value="SDP">SDP - Sudanese Pound</option><option value="SRG">SRG - Surinam Guilder</option><option value="SZL">SZL - Swaziland Lilangeni</option><option value="SEK">SEK - Swedish Krona</option><option value="CHF">CHF - Swiss Franc</option><option value="SYP">SYP - Syrian Pound</option><option value="TJR">TJR - Tadzhikistani Ruble</option><option value="TZS">TZS - Tanzanian Shilling</option><option value="THB">THB - Thailand Baht</option><option value="TPE">TPE - Timor Escudo</option><option value="TOP">TOP - Tongan Pa'anga</option><option value="TTD">TTD - Trinidad and Tobago Dollar</option><option value="TND">TND - Tunisian Dinar</option><option value="TRY">TRY - Turkish Lira</option><option value="TMM">TMM - Turkmenistani Manat</option><option value="UGS">UGS - Ugandan Shilling</option><option value="UAH">UAH - Ukrainian Hryvnia</option><option value="AED">AED - United Arab Emirates Dirham</option><option selected="selected" value="USD">USD - American Dollar</option><option value="UYU">UYU - Uruguay</option><option value="UYP">UYP - Uruguayan New Peso</option><option value="VUV">VUV - Vanuatu Vatu</option><option value="VEB">VEB - Venezuelan Bolivar</option><option value="VND">VND - Vietnamese Dong</option><option value="ANG">ANG - West Indian Guilder</option><option value="YER">YER - Yemeni Ryal</option><option value="ZRZ">ZRZ - Zaire</option><option value="ZMK">ZMK - Zambian Kwacha</option><option value="ZWD">ZWD - Zimbabwean Dollar</option></select></td>
+  </tr>
+  <tr>
+   <td class="label" id="ext-gen598"><span class="tableheadtext">Industry</span></td>
+   <td><select class="inputBox" name="industryEnumId" id="createLeadForm_industryEnumId" size="1"><option value="">&nbsp;</option><option value="IND_AEROSPACE">Aerospace</option><option value="IND_HARDWARE">Computer Hardware</option><option value="IND_SOFTWARE">Computer Software</option><option value="IND_DISTRIBUTION">Distribution</option><option value="IND_FINANCE">Finance</option><option value="IND_GEN_SERVICES">General Services</option><option value="IND_HEALTH_CARE">Health Care</option><option value="IND_INSURANCE">Insurance</option><option value="IND_MANUFACTURING">Manufacturing</option><option value="IND_MEDIA">Media</option><option value="IND_NON_PROFIT">Non-profit</option><option value="IND_REAL_ESTATE">Real Estate</option><option value="IND_RETAIL">Retail</option><option value="IND_ETAILER">E-tailer</option><option value="IND_TELECOM">Telecommunications</option><option value="IND_PRESS">Press</option></select></td>
+   <td class="label"><span class="tableheadtext">Number Of Employees</span></td>
+   <td><input type="text" class="inputBox" name="numberEmployees" size="30" maxlength="100" id="createLeadForm_numberEmployees">
+</td>
+  </tr>
+  <tr>
+   <td class="label" id="ext-gen599"><span class="tableheadtext">Ownership</span></td>
+   <td colspan="4"><select class="inputBox" name="ownershipEnumId" id="createLeadForm_ownershipEnumId" size="1"><option value="">&nbsp;</option><option value="OWN_PROPRIETOR">Sole Proprietorship</option><option value="OWN_PARTNERSHIP">Partnership</option><option value="OWN_LLC_LLP">LLC/LLP</option><option value="OWN_SCORP">S-Corporation</option><option value="OWN_CCORP">Corporation</option><option value="OWN_PUBLIC_CORP">Public Corporation</option></select></td>
+  </tr>
+  <tr>
+   <td class="label" id="ext-gen600"><span class="tableheadtext">SIC Code</span></td>
+   <td><input type="text" class="inputBox" name="sicCode" size="30" maxlength="100" id="createLeadForm_sicCode">
+</td>
+   <td class="label"><span class="tableheadtext">Ticker Symbol</span></td>
+   <td><input type="text" class="inputBox" name="tickerSymbol" size="30" maxlength="100" id="createLeadForm_tickerSymbol">
+</td>
+  </tr>
+  <tr>
+   <td class="label"><span class="tableheadtext">Description</span></td>
+   <td colspan="4"><textarea class="inputBox" name="description" cols="60" rows="3" id="createLeadForm_description"></textarea></td>
+  </tr>
+  <tr>
+   <td class="label"><span class="tableheadtext">Important Note</span></td>
+   <td colspan="4"><textarea class="inputBox" name="importantNote" cols="60" rows="3" id="createLeadForm_importantNote"></textarea></td>
+  </tr>
+  <tr>
+   <td class="label"><span class="tableheadtext">&nbsp;</span></td>
+   <td colspan="4" class="formSectionHeader"><span class="formSectionHeaderTitle" id="createLeadForm_ _sp">Contact Information</span></td>
+  </tr>
+  <tr>
+   <td class="label"><span class="tableheadtext">Country Code</span></td>
+   <td colspan="4"><input type="text" class="inputBox" name="primaryPhoneCountryCode" value="1" size="6" maxlength="10" id="createLeadForm_primaryPhoneCountryCode">
+</td>
+  </tr>
+  <tr>
+   <td class="label"><span class="tableheadtext">Area Code</span></td>
+   <td id="ext-gen604"><input type="text" class="inputBox" name="primaryPhoneAreaCode" size="6" maxlength="10" id="createLeadForm_primaryPhoneAreaCode">
+</td>
+   <td class="label"><span class="tableheadtext">Phone Number</span></td>
+   <td><input type="text" class="inputBox" name="primaryPhoneNumber" size="10" maxlength="20" id="createLeadForm_primaryPhoneNumber">
+</td>
+  </tr>
+  <tr>
+   <td class="label"><span class="tableheadtext">Extension</span></td>
+   <td><input type="text" class="inputBox" name="primaryPhoneExtension" size="10" maxlength="20" id="createLeadForm_primaryPhoneExtension">
+</td>
+   <td class="label"><span class="tableheadtext">Person to Ask For</span></td>
+   <td><input type="text" class="inputBox" name="primaryPhoneAskForName" size="30" maxlength="60" id="createLeadForm_primaryPhoneAskForName">
+</td>
+  </tr>
+  <tr>
+   <td class="label"><span class="tableheadtext">E-Mail Address</span></td>
+   <td><input type="text" class="inputBox" name="primaryEmail" size="30" maxlength="100" id="createLeadForm_primaryEmail">
+</td>
+   <td class="label"><span class="tableheadtext">Web Url</span></td>
+   <td><input type="text" class="inputBox" name="primaryWebUrl" size="30" maxlength="100" id="createLeadForm_primaryWebUrl">
+</td>
+  </tr>
+  <tr>
+   <td class="label"></td>
+   <td colspan="4" class="formSectionHeader"><span class="formSectionHeaderTitle" id="createLeadForm__sp">Primary Address</span></td>
+  </tr>
+  <tr>
+   <td class="label"><span class="tableheadtext">To Name</span></td>
+   <td><input type="text" class="inputBox" name="generalToName" size="30" maxlength="100" id="createLeadForm_generalToName">
+</td>
+   <td class="label"><span class="tableheadtext">Attention Name</span></td>
+   <td><input type="text" class="inputBox" name="generalAttnName" size="30" maxlength="100" id="createLeadForm_generalAttnName">
+</td>
+  </tr>
+  <tr>
+   <td class="label"><span class="tableheadtext">Address Line 1</span></td>
+   <td><input type="text" class="inputBox" name="generalAddress1" size="30" maxlength="100" id="createLeadForm_generalAddress1">
+</td>
+   <td class="label"><span class="tableheadtext">Address Line 2</span></td>
+   <td><input type="text" class="inputBox" name="generalAddress2" size="30" maxlength="100" id="createLeadForm_generalAddress2">
+</td>
+  </tr>
+  <tr>
+   <td class="label"><span class="tableheadtext">City</span></td>
+   <td><input type="text" class="inputBox" name="generalCity" size="30" maxlength="100" id="createLeadForm_generalCity">
+</td>
+   <td class="label"><span class="tableheadtext">State/Province</span></td>
+   <td><select class="inputBox" name="generalStateProvinceGeoId" id="createLeadForm_generalStateProvinceGeoId" size="1"><option value="">&nbsp;</option><option value="USA-84057">84057</option><option value="AL">Alabama</option><option value="AK">Alaska</option><option value="AZ">Arizona</option><option value="AR">Arkansas</option><option value="AA">Armed Forces Americas</option><option value="AE">Armed Forces Europe</option><option value="AP">Armed Forces Pacific</option><option value="CA">California</option><option value="CO">Colorado</option><option value="CT">Connecticut</option><option value="DE">Delaware</option><option value="DC">District of Columbia</option><option value="FL">Florida</option><option value="GA">Georgia</option><option value="GU">Guam</option><option value="HI">Hawaii</option><option value="ID">Idaho</option><option value="IL">Illinois</option><option value="IN">Indiana</option><option value="IA">Iowa</option><option value="KS">Kansas</option><option value="KY">Kentucky</option><option value="LA">Louisiana</option><option value="ME">Maine</option><option value="MD">Maryland</option><option value="MA">Massachusetts</option><option value="MI">Michigan</option><option value="MN">Minnesota</option><option value="MS">Mississippi</option><option value="MO">Missouri</option><option value="MT">Montana</option><option value="NE">Nebraska</option><option value="NV">Nevada</option><option value="NH">New Hampshire</option><option value="NJ">New Jersey</option><option value="NM">New Mexico</option><option value="NY">New York</option><option value="NC">North Carolina</option><option value="ND">North Dakota</option><option value="OH">Ohio</option><option value="OK">Oklahoma</option><option value="OR">Oregon</option><option value="PA">Pennsylvania</option><option value="PR">Puerto Rico</option><option value="RI">Rhode Island</option><option value="SC">South Carolina</option><option value="SD">South Dakota</option><option value="TN">Tennessee</option><option value="TX">Texas</option><option value="UT">Utah</option><option value="VT">Vermont</option><option value="VI">Virgin Islands</option><option value="VA">Virginia</option><option value="WA">Washington</option><option value="WV">West Virginia</option><option value="WI">Wisconsin</option><option value="WY">Wyoming</option></select></td>
+  </tr>
+  <tr>
+   <td class="label"><span class="tableheadtext">Zip/Postal Code</span></td>
+   <td><input type="text" class="inputBox" name="generalPostalCode" size="30" maxlength="100" id="createLeadForm_generalPostalCode">
+</td>
+   <td class="label"><span class="tableheadtext">Country</span></td>
+   <td><select class="inputBox" name="generalCountryGeoId" id="createLeadForm_generalCountryGeoId" onchange="opentaps.swapStatesInDropdown(this, 'generalStateProvinceGeoId')" size="1"><option value="">&nbsp;</option><option value="AFG">Afghanistan</option><option value="ALB">Albania</option><option value="DZA">Algeria</option><option value="ASM">American Samoa</option><option value="AND">Andorra</option><option value="AGO">Angola</option><option value="AIA">Anguilla</option><option value="ATA">Antarctica</option><option value="ATG">Antigua And Barbuda</option><option value="ARG">Argentina</option><option value="ARM">Armenia</option><option value="ABW">Aruba</option><option value="AUS">Australia</option><option value="AUT">Austria</option><option value="AZE">Azerbaijan</option><option value="BHS">Bahamas</option><option value="BHR">Bahrain</option><option value="BGD">Bangladesh</option><option value="BRB">Barbados</option><option value="BLR">Belarus</option><option value="BEL">Belgium</option><option value="BLZ">Belize</option><option value="BEN">Benin</option><option value="BMU">Bermuda</option><option value="BTN">Bhutan</option><option value="BOL">Bolivia</option><option value="BIH">Bosnia And Herzegowina</option><option value="BWA">Botswana </option><option value="BVT">Bouvet Island</option><option value="BRA">Brazil</option><option value="IOT">British Indian Ocean Territory</option><option value="BRN">Brunei Darussalam</option><option value="BGR">Bulgaria</option><option value="BFA">Burkina Faso</option><option value="BDI">Burundi</option><option value="KHM">Cambodia</option><option value="CMR">Cameroon</option><option value="CAN">Canada</option><option value="CPV">Cape Verde</option><option value="CYM">Cayman Islands</option><option value="CAF">Central African Republic</option><option value="TCD">Chad</option><option value="CHL">Chile</option><option value="CHN">China</option><option value="CXR">Christmas Island</option><option value="CCK">Cocos (keeling) Islands</option><option value="COL">Colombia</option><option value="COM">Comoros</option><option value="COG">Congo</option><option value="COD">Congo, The Democratic Republic Of The</option><option value="COK">Cook Islands</option><option value="CRI">Costa Rica</option><option value="CIV">Cote D'ivoire</option><option value="HRV">Croatia (local Name: Hrvatska)</option><option value="CUB">Cuba</option><option value="CYP">Cyprus</option><option value="CZE">Czech Republic</option><option value="DNK">Denmark</option><option value="DJI">Djibouti</option><option value="DMA">Dominica</option><option value="DOM">Dominican Republic</option><option value="TLS">East Timor</option><option value="ECU">Ecuador</option><option value="EGY">Egypt</option><option value="SLV">El Salvador</option><option value="ENGL">England</option><option value="GNQ">Equatorial Guinea</option><option value="ERI">Eritrea</option><option value="EST">Estonia</option><option value="ETH">Ethiopia</option><option value="FLK">Falkland Islands (malvinas)</option><option value="FRO">Faroe Islands</option><option value="FJI">Fiji</option><option value="FIN">Finland</option><option value="FRA">France</option><option value="FXX">France, Metropolitan</option><option value="GUF">French Guiana</option><option value="PYF">French Polynesia</option><option value="ATF">French Southern Territories</option><option value="GAB">Gabon</option><option value="GMB">Gambia</option><option value="GEO">Georgia</option><option value="DEU">Germany</option><option value="GHA">Ghana</option><option value="GIB">Gibraltar</option><option value="GRC">Greece</option><option value="GRL">Greenland</option><option value="GRD">Grenada</option><option value="GLP">Guadeloupe</option><option value="GUM">Guam</option><option value="GTM">Guatemala</option><option value="GIN">Guinea</option><option value="GNB">Guinea-bissau</option><option value="GUY">Guyana</option><option value="HTI">Haiti</option><option value="HMD">Heard And Mc Donald Islands</option><option value="VAT">Holy See (vatican City State)</option><option value="HND">Honduras</option><option value="HKG">Hong Kong</option><option value="HUN">Hungary</option><option value="ISL">Iceland</option><option value="IND">India</option><option value="IDN">Indonesia</option><option value="IRN">Iran (islamic Republic Of)</option><option value="IRQ">Iraq</option><option value="IRL">Ireland</option><option value="ISR">Israel</option><option value="ITA">Italy</option><option value="JAM">Jamaica</option><option value="JPN">Japan</option><option value="JOR">Jordan</option><option value="KAZ">Kazakhstan</option><option value="KEN">Kenya</option><option value="KIR">Kiribati</option><option value="PRK">Korea, Democratic People's Republic Of</option><option value="KOR">Korea, Republic Of</option><option value="KWT">Kuwait</option><option value="KGZ">Kyrgyzstan</option><option value="LAO">Lao People's Democratic Republic</option><option value="LVA">Latvia</option><option value="LBN">Lebanon</option><option value="LSO">Lesotho</option><option value="LBR">Liberia</option><option value="LBY">Libyan Arab Jamahiriya</option><option value="LIE">Liechtenstein</option><option value="LTU">Lithuania</option><option value="LUX">Luxembourg</option><option value="MAC">Macau</option><option value="MKD">Macedonia, The Former Yugoslav Republic Of</option><option value="MDG">Madagascar</option><option value="MWI">Malawi</option><option value="MYS">Malaysia</option><option value="MDV">Maldives</option><option value="MLI">Mali</option><option value="MLT">Malta</option><option value="MHL">Marshall Islands</option><option value="MTQ">Martinique</option><option value="MRT">Mauritania</option><option value="MUS">Mauritius</option><option value="MYT">Mayotte</option><option value="MEX">Mexico</option><option value="FSM">Micronesia, Federated States Of</option><option value="MDA">Moldova, Republic Of</option><option value="MCO">Monaco</option><option value="MNG">Mongolia</option><option value="MNE">Montenegro</option><option value="MSR">Montserrat</option><option value="MAR">Morocco</option><option value="MOZ">Mozambique</option><option value="MMR">Myanmar</option><option value="NIRL">N.Ireland</option><option value="NAM">Namibia</option><option value="NRU">Nauru</option><option value="NPL">Nepal</option><option value="NLD">Netherlands</option><option value="ANT">Netherlands Antilles</option><option value="NCL">New Caledonia</option><option value="NZL">New Zealand</option><option value="NIC">Nicaragua</option><option value="NER">Niger</option><option value="NGA">Nigeria</option><option value="NIU">Niue</option><option value="NFK">Norfolk Island</option><option value="MNP">Northern Mariana Islands</option><option value="NOR">Norway</option><option value="OMN">Oman</option><option value="PAK">Pakistan</option><option value="PLW">Palau</option><option value="PSE">Palestinian Territory, Occupied</option><option value="PAN">Panama</option><option value="PNG">Papua New Guinea</option><option value="PRY">Paraguay</option><option value="PER">Peru</option><option value="PHL">Philippines</option><option value="PCN">Pitcairn</option><option value="POL">Poland</option><option value="PRT">Portugal</option><option value="PRI">Puerto Rico</option><option value="QAT">Qatar</option><option value="REU">Reunion</option><option value="ROU">Romania</option><option value="RUS">Russian Federation</option><option value="RWA">Rwanda</option><option value="KNA">Saint Kitts And Nevis</option><option value="LCA">Saint Lucia</option><option value="VCT">Saint Vincent And The Grenadines</option><option value="WSM">Samoa</option><option value="SMR">San Marino</option><option value="STP">Sao Tome And Principe</option><option value="SAU">Saudi Arabia</option><option value="SCOT">Scotland</option><option value="SEN">Senegal</option><option value="SRB">Serbia</option><option value="SYC">Seychelles</option><option value="SLE">Sierra Leone</option><option value="SGP">Singapore</option><option value="SVK">Slovakia (slovak Republic)</option><option value="SVN">Slovenia</option><option value="SLB">Solomon Islands</option><option value="SOM">Somalia</option><option value="ZAF">South Africa</option><option value="SGS">South Georgia And The South Sandwich Islands</option><option value="ESP">Spain</option><option value="LKA">Sri Lanka</option><option value="SHN">St. Helena</option><option value="SPM">St. Pierre And Miquelon</option><option value="SDN">Sudan</option><option value="SUR">Suriname</option><option value="SJM">Svalbard And Jan Mayen Islands</option><option value="SWZ">Swaziland</option><option value="SWE">Sweden</option><option value="CHE">Switzerland</option><option value="SYR">Syrian Arab Republic</option><option value="TWN">Taiwan, Province Of China</option><option value="TJK">Tajikistan</option><option value="TZA">Tanzania, United Republic Of</option><option value="THA">Thailand</option><option value="TGO">Togo</option><option value="TKL">Tokelau</option><option value="TON">Tonga</option><option value="TTO">Trinidad And Tobago</option><option value="TUN">Tunisia</option><option value="TUR">Turkey</option><option value="TKM">Turkmenistan</option><option value="TCA">Turks And Caicos Islands</option><option value="TUV">Tuvalu</option><option value="UGA">Uganda</option><option value="UKR">Ukraine</option><option value="ARE">United Arab Emirates</option><option value="GBR">United Kingdom</option><option selected="selected" value="USA">United States</option><option value="UMI">United States Minor Outlying Islands</option><option value="URY">Uruguay</option><option value="UZB">Uzbekistan</option><option value="VUT">Vanuatu</option><option value="VEN">Venezuela</option><option value="VNM">Viet Nam</option><option value="VGB">Virgin Islands (british)</option><option value="VIR">Virgin Islands (u.s.)</option><option value="WALS">Wales</option><option value="WLF">Wallis And Futuna Islands</option><option value="ESH">Western Sahara</option><option value="YEM">Yemen</option><option value="YUG">Yugoslavia</option><option value="ZMB">Zambia</option><option value="ZWE">Zimbabwe</option></select></td>
+  </tr>
+  <tr>
+   <td class="label"><span class="tableheadtext">Zip/Postal Code Extension</span></td>
+   <td colspan="4"><input type="text" class="inputBox" name="generalPostalCodeExt" size="5" maxlength="100" id="createLeadForm_generalPostalCodeExt">
+</td>
+  </tr>
+  <tr>
+   <td class="label">&nbsp;</td>
+   <td colspan="4"><input type="submit" class="smallSubmit" name="submitButton" value="Create Lead"></td>
+  </tr>
+ </tbody> 
+
+
+
+
+Code in playwright
+// createLead.single.spec.js
+// Playwright single-test suite for CRM application (Create Lead - happy path)
+// - Single test (as requested).
+// - XPath-only locators (prefer relative XPath).
+// - Uses explicit waits (waitForSelector / waitForNavigation). NO thread.sleep.
+// - Login uses <form id="login"> and credentials demosalesmanager / crmsfa.
+// - Navigates: click CRM/SFA -> Leads -> Create Lead.
+// - Uses the <tbody> container to scope lead input actions.
+// - Uses ID locators when they are meaningful and do not contain numeric-only ids (e.g. createLeadForm_companyName).
+// - Does NOT use CSS selectors.
+
+const { test, expect } = require('@playwright/test');
+
+test.describe('CRM - Create Lead (single test)', () => {
+  const BASE_URL = 'http://leaftaps.com/opentaps/control/main'; // <<-- set your app URL
+
+  /**
+   * Perform login using the form with id="login"
+   * - fills username / password and submits.
+   */
+  async function loginUsingLoginForm(page) {
+    // Navigate to app (login page)
+    await page.goto(BASE_URL);
+
+    // Wait for the login form to be visible
+    await page.waitForSelector("xpath=//form[@id='login']", { state: 'visible' });
+
+    // Fill username (inside the login form)
+    await page.locator("xpath=//form[@id='login']//input[@id='username' or @name='USERNAME']").fill('demosalesmanager');
+
+    // Fill password
+    await page.locator("xpath=//form[@id='login']//input[@id='password' or @name='PASSWORD']").fill('crmsfa');
+
+    // Click the submit button inside the form and wait for navigation
+    await Promise.all([
+      page.waitForNavigation({ waitUntil: 'networkidle' }),
+      page.locator("xpath=//form[@id='login']//input[@type='submit' and (@value='Login' or contains(@class,'decorativeSubmit'))]").click()
+    ]);
+  }
+
+  /**
+   * Navigate to Create Lead page: Click CRM/SFA -> Leads -> Create Lead
+   * All clicks use XPath and explicit navigation waits.
+   */
+  async function openCreateLeadPage(page) {
+    // Click the CRM/SFA link (text may be 'CRM/SFA' or contain 'CRM')
+    const crmLinkXpath = "xpath=//a[normalize-space(text())='CRM/SFA' or contains(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'crm')]";
+    await page.waitForSelector(crmLinkXpath, { state: 'visible' });
+    await Promise.all([
+      page.waitForNavigation({ waitUntil: 'networkidle' }),
+      page.locator(crmLinkXpath).click()
+    ]);
+
+    // Click Leads link
+    const leadsLinkXpath = "xpath=//a[normalize-space(text())='Leads' or contains(normalize-space(.),'Leads')]";
+    await page.waitForSelector(leadsLinkXpath, { state: 'visible' });
+    await Promise.all([
+      page.waitForNavigation({ waitUntil: 'networkidle' }),
+      page.locator(leadsLinkXpath).click()
+    ]);
+
+    // Click Create Lead link (could be 'Create Lead' or 'Create Leads')
+    const createLeadLinkXpath = "xpath=//a[normalize-space(text())='Create Lead' or normalize-space(text())='Create Leads' or contains(normalize-space(.),'Create Lead')]";
+    await page.waitForSelector(createLeadLinkXpath, { state: 'visible' });
+    await Promise.all([
+      page.waitForNavigation({ waitUntil: 'networkidle' }),
+      page.locator(createLeadLinkXpath).click()
+    ]);
+  }
+
+  /**
+   * The single test: fills mandatory fields inside the <tbody> and submits the form.
+   * Mandatory inputs (per provided DOM):
+   *  - companyName (id=createLeadForm_companyName, name=companyName)
+   *  - firstName  (id=createLeadForm_firstName, name=firstName)
+   *  - lastName   (id=createLeadForm_lastName, name=lastName)
+   */
+  test('P1 - Create Lead (happy path) - create lead with mandatory fields', async ({ page }) => {
+    // 1) Login
+    await loginUsingLoginForm(page);
+
+    // 2) Open Create Lead page
+    await openCreateLeadPage(page);
+
+    // 3) Wait for tbody (form fields area) to be present and visible
+    const tbodyXpath = "xpath=//tbody";
+    await page.waitForSelector(tbodyXpath, { state: 'visible' });
+
+    // 4) Fill Company Name - prefer ID when it's meaningful (createLeadForm_companyName)
+    const companyInput = page.locator(`${tbodyXpath}//input[@id='createLeadForm_companyName' or @name='companyName']`);
+    await companyInput.waitFor({ state: 'visible' });
+    await companyInput.fill('Testleaf');
+
+    // Verify the input value pre-submit (explicit check)
+    await expect(companyInput).toHaveValue('Testleaf');
+
+    // 5) Fill First Name
+    const firstNameInput = page.locator(`${tbodyXpath}//input[@id='createLeadForm_firstName' or @name='firstName']`);
+    await firstNameInput.waitFor({ state: 'visible' });
+    await firstNameInput.fill('Sudarsan');
+
+    // 6) Fill Last Name
+    const lastNameInput = page.locator(`${tbodyXpath}//input[@id='createLeadForm_lastName' or @name='lastName']`);
+    await lastNameInput.waitFor({ state: 'visible' });
+    await lastNameInput.fill('s');
+
+    // 7) Click Create Lead submit button (submit input inside the tbody)
+    const createButton = page.locator(`${tbodyXpath}//input[@type='submit' and (@name='submitButton' or @value='Create Lead')]`);
+    await createButton.waitFor({ state: 'visible' });
+
+    // Submit and wait for navigation to the result/view page
+    await Promise.all([
+      page.waitForNavigation({ waitUntil: 'networkidle' }),
+      createButton.click()
+    ]);
+
+    // 8) Post-submit verification:
+    // Primary check: span with id viewLead_companyName_sp (common in this app)
+    const viewCompanySpanXpath = "xpath=//span[@id='viewLead_companyName_sp']";
+    if (await page.locator(viewCompanySpanXpath).count() > 0) {
+      const span = page.locator(viewCompanySpanXpath);
+      await span.waitFor({ state: 'visible' });
+      await expect(span).toContainText('Testleaf', { timeout: 5000 });
+      return;
+    }
+
+    // Fallback: find the table cell labelled 'Company Name' and check adjacent td
+    const companyCellFallbackXpath = "xpath=(//td[normalize-space(.)='Company Name' or contains(normalize-space(.),'Company Name')]/following-sibling::td)[1]";
+    await page.waitForSelector(companyCellFallbackXpath, { state: 'visible' });
+    const companyCell = page.locator(companyCellFallbackXpath);
+    await expect(companyCell).toContainText('Testleaf', { timeout: 5000 });
+  });
+
+});
